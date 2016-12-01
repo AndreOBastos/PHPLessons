@@ -51,6 +51,16 @@
 							<th>POST e GET</th>
 							<th><a href="aula6.php">Acesse Aqui</a></th>
 						</tr>
+						<tr>
+							<th>7</th>
+							<th>Session</th>
+							<th><a href="aula7.php">Acesse Aqui</a></th>
+						</tr>
+						<tr>
+							<th>7.2</th>
+							<th>Session - Teste</th>
+							<th><a href="aula7-2.php">Acesse Aqui</a></th>
+						</tr>
 					</tbody>
 					<thead class="thead-inverse">
 						<tr>

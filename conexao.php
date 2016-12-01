@@ -3,7 +3,8 @@
 			const SERVIDOR = "localhost";
 			const USUARIO = "root";
 			const SENHA = "";
-			const BD = "aula-Uweb";
+			//const BD = "aula-Uweb";
+			const BD = "teste-login";
 			
 			$conexao = new mysqli(SERVIDOR, USUARIO, SENHA, BD);
 
