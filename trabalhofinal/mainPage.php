@@ -22,6 +22,23 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha/js/bootstrap.min.js"></script>
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 		<link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet"> 
+		<script
+			src="https://code.jquery.com/jquery-3.1.1.js"
+			integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
+			crossorigin="anonymous">
+		</script>
+		<script type="text/javascript">
+			$(document).ready(function(e){
+				$("textarea").keyup(updateCount);
+				$("textarea").keydown(updateCount);
+				$("textarea").on('input', updateCount);
+
+				function updateCount(){
+					var cs = "Número de caracteres restantes: " + [300 - $(this).val().lenght];
+					$("#messageCounter").text(cs);
+				}
+			});
+		</script>
 	</head>
 	<body>
 		<nav class="navbar navbar-light bg-faded">
@@ -78,7 +95,7 @@
 								<textarea class="form-control" rows="4" name="mensagem" required></textarea>
 								<div style="display:flex; justify-content: space-between;">
 									<button type="submit" name="sendMessage">Enviar Mensagem</button>
-									<span id="messageCounter">Limite de 150 caracteres</span>
+									<span id="messageCounter">Número de caracteres restantes: 500</span>
 								</div>
 							</div>
 						</form>
