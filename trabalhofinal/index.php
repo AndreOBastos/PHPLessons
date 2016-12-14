@@ -18,19 +18,39 @@
 				$("#logar").click(function(){
 					$("#LoginForm").show();
 					$("#RegisterForm").hide();
+					$("#EsqueciForm").hide();
 					$("#logar").addClass("active");
 					$("#registrar").removeClass("active");
+					$("#esqueci").removeClass("active");
 				});
 				$("#registrar").click(function(){
 					$("#LoginForm").hide();
 					$("#RegisterForm").show();
+					$("#EsqueciForm").hide();
 					$("#logar").removeClass("active");
 					$("#registrar").addClass("active");
+					$("#esqueci").removeClass("active");
+				});
+				$("#esqueciLink").click(function(){
+					$("#LoginForm").hide();
+					$("#RegisterForm").hide();
+					$("#EsqueciForm").show();
+					$("#logar").removeClass("active");
+					$("#registrar").removeClass("active");
+					$("#esqueci").addClass("active");
+				});
+				$("#esqueci").click(function(){
+					$("#LoginForm").hide();
+					$("#RegisterForm").hide();
+					$("#EsqueciForm").show();
+					$("#logar").removeClass("active");
+					$("#registrar").removeClass("active");
+					$("#esqueci").addClass("active");
 				});
 			});	
 		</script>
 		<link rel="stylesheet" type="text/css" href="css/style.css">
-		<link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet"> 
+		<link href="https://fonts.googleapis.com/css?family=PT+Sans|Ubuntu" rel="stylesheet">  
 	</head>
 	<body class="index">
 		<nav class="navbar navbar-light bg-faded">
@@ -41,6 +61,7 @@
 				<div class="nav navbar-nav">
 					<a class="nav-item nav-link active" href="#" id="logar">Logar</a>
 					<a class="nav-item nav-link" href="#" id="registrar">Registrar</a>
+					<a class="nav-item nav-link" href="#" id="esqueci">Esqueci Minha Senha</a>
 				</div>
 			</div>					
 		</nav>
@@ -68,21 +89,24 @@
 				?>	
 				<div id="LoginForm" class="col-md-4 col-md-offset-4 centerBlock formStyle" style="display:block;">
 					<form class="form" method="POST" action="login.php">
-						<label for="LoginForm"><strong>Preencha abaixo para realizar o login</strong></label>
+						<label class="title-label" for="LoginForm"><strong>Preencha abaixo para realizar o login</strong></label>
 						<div class="form-group">
 							<label for="login">Login:</label><br>
 							<input type="text" name="login" id="login" required>
 						</div>
 						<div class="form-group">
 							<label for="senha">Senha:</label><br>
-							<input type="password" name="senha" id="senha" required>
+							<input type="password" name="senha" id="senha" required><br>
+							<a href="#" id="esqueciLink">Esqueci minha senha</a>
 						</div>
-						<button type="submit" name="submitButton">Realizar Login</button>
+						<div class="form-group button-group">
+							<button type="submit" name="submitButton">Realizar Login</button>
+						</div>
 					</form>
 				</div>
 				<div id="RegisterForm" class="col-md-4 col-md-offset-4 centerBlock formStyle" style="display:none;">
 					<form method="POST" action="register.php" enctype="multipart/form-data">
-						<label for="RegisterForm"><strong>Preencha abaixo para se registrar</strong></label>
+						<label class="title-label" for="RegisterForm"><strong>Preencha abaixo para se registrar</strong></label>
 						<div class="form-group">
 							<label for="nomeRegister">Seu Nome:</label><br>
 							<input type="text" name="nome" id="nomeRegister" required>
@@ -96,10 +120,32 @@
 							<input type="password" name="senha" id="senhaRegister" required>
 						</div>
 						<div class="form-group">
+							<label for="senhaRegister">Código de 4 números para recuperação de senha:</label><br>
+							<input type="password" name="codigo" id="codigoRegister" maxlength="4" pattern="[0-9]*" required>
+						</div>
+						<div class="form-group">
 							<label for="avatarRegister">Escolha uma imagem para ser o seu avatar:</label><br>
 							<input type="file" name="avatar" id="avatarRegister" accept="image/*">
 						</div>
-						<button type="submit" name="submitButton">Registrar Usuário</button>
+						<div class="form-group button-group">
+							<button type="submit" name="submitButton">Registrar Usuário</button>
+						</div>
+					</form>
+				</div>
+				<div id="EsqueciForm" class="col-md-4 col-md-offset-4 centerBlock formStyle" style="display:none;">
+					<form method="POST" action="esqueci-senha.php" enctype="multipart/form-data">
+						<label class="title-label" for="RegisterForm"><strong>Preencha abaixo para alterar sua senha</strong></label>
+						<div class="form-group">
+							<label for="nomeEsqueci">Seu Login:</label><br>
+							<input type="text" name="nome" id="nomeEsqueci" required>
+						</div>
+						<div class="form-group">
+							<label for="senhaEsqueci">Código de 4 números para recuperação de senha:</label><br>
+							<input type="password" name="codigo" id="codigoEsqueci" maxlength="4" pattern="[0-9]*" required>
+						</div>
+						<div class="form-group button-group">
+							<button type="submit" name="submitButton">Alterar Senha</button>
+						</div>
 					</form>
 				</div>
 			</div>

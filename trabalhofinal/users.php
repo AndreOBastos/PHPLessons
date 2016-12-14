@@ -60,13 +60,13 @@
 				<div class="col-xs-2 profile">
 					<img src=<?php echo "'" . $avatarLocation . "'";?> class="avatar-main img-responsive rounded img-thumbnail"><br>
 					<p><strong><?php echo $nomeUsuario;?></strong></p>
-					<p><?php echo $loginUsuario;?></p>
+					<p><?php echo "- " . $loginUsuario;?></p>
 				</div>
 				<div class="col-xs-8 news-feed">
 					<?php
 						if(isset($_GET["filtro"])){
 							$filtro = $_GET["filtro"];
-							$sql = "SELECT id, login, nome, avatar FROM usuarios WHERE id!=" . $idUsuario . " AND (nome like '%" . $filtro . "%' OR ( login like '%". $filtro . "%'))";
+							$sql = "SELECT id, login, nome, avatar FROM usuarios WHERE id!=" . $idUsuario . " AND (LOWER(nome) like LOWER('%" . $filtro . "%') OR LOWER(login) like LOWER('%". $filtro . "%'))";
 						} else {
 							$sql = "SELECT id, login, nome, avatar FROM usuarios WHERE id!=" . $idUsuario;
 						}

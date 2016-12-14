@@ -20,8 +20,9 @@
 					$nome = addslashes(trim($_POST["nome"]));
 					$login = addslashes(trim($_POST["login"]));
 					$senha = md5(trim($_POST["senha"]));
+					$codigo = $_POST["codigo"];
 					
-					$sql = "INSERT INTO usuarios (nome, login, senha, avatar) VALUES ('" . $nome . "', '". $login . "', '" . $senha ."', '" . $fileLocation . $name . "')";
+					$sql = "INSERT INTO usuarios (nome, login, senha, avatar, codigo) VALUES ('" . $nome . "', '". $login . "', '" . $senha ."', '" . $fileLocation . $name . "', " . $codigo . ")";
 				
 					if($conexao->query($sql)==TRUE){
 						$_SESSION["registerSuccessMessage"] = "Usuário adicionado com sucesso.";
@@ -39,8 +40,9 @@
 				$nome = addslashes(trim($_POST["nome"]));
 				$login = addslashes(trim($_POST["login"]));
 				$senha = md5(trim($_POST["senha"]));
+				$codigo = $_POST["codigo"];
 				
-				$sql = "INSERT INTO usuarios (nome, login, senha) VALUES ('" . $nome . "', '". $login . "', '" . $senha ."')";
+				$sql = "INSERT INTO usuarios (nome, login, senha, codigo) VALUES ('" . $nome . "', '". $login . "', '" . $senha ."',". $codigo .")";
 			
 				if($conexao->query($sql)==TRUE){
 					$_SESSION["registerSuccessMessage"] = "Usuário adicionado com sucesso.";

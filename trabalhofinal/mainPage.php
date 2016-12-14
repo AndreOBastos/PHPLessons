@@ -28,13 +28,13 @@
 			crossorigin="anonymous">
 		</script>
 		<script type="text/javascript">
-			$(document).ready(function(e){
+			$(document).ready(function(){
 				$("textarea").keyup(updateCount);
 				$("textarea").keydown(updateCount);
 				$("textarea").on('input', updateCount);
 
 				function updateCount(){
-					var cs = "Número de caracteres restantes: " + [300 - $(this).val().lenght];
+					var cs = "Número de caracteres restantes: " + [300 - $(this).val().length];
 					$("#messageCounter").text(cs);
 				}
 			});
@@ -69,7 +69,7 @@
 				<div class="col-xs-2 profile">
 					<img src=<?php echo "'" . $avatarLocation . "'";?> class="avatar-main img-responsive rounded img-thumbnail" width="200px" height="200px"><br>
 					<p><strong><?php echo $nomeUsuario;?></strong></p>
-					<p><?php echo $loginUsuario;?></p>
+					<p><?php echo "- " . $loginUsuario;?></p>
 				</div>
 				<div class="col-xs-8 news-feed">
 					<?php
@@ -95,7 +95,7 @@
 								<textarea class="form-control" rows="4" name="mensagem" required></textarea>
 								<div style="display:flex; justify-content: space-between;">
 									<button type="submit" name="sendMessage">Enviar Mensagem</button>
-									<span id="messageCounter">Número de caracteres restantes: 500</span>
+									<span id="messageCounter">Número de caracteres restantes: 300</span>
 								</div>
 							</div>
 						</form>
@@ -104,7 +104,7 @@
 						<h5 class="text-muted text-center">- Mensagens dos usuários que você segue -</h5>
 					</div>
 					<?php
-						$sql = "SELECT mensagens.idUsuario, mensagens.mensagem, mensagens.horaPostagem, usuarios.nome, usuarios.avatar FROM seguidores, mensagens, usuarios WHERE mensagens.idUsuario=seguidores.idSeguido AND seguidores.idUsuario='". $idUsuario . "' AND usuarios.id=seguidores.idSeguido ORDER BY mensagens.horaPostagem DESC";
+						$sql = "SELECT mensagens.idUsuario, mensagens.mensagem, mensagens.horaPostagem, usuarios.nome, usuarios.avatar, usuarios.login FROM seguidores, mensagens, usuarios WHERE mensagens.idUsuario=seguidores.idSeguido AND seguidores.idUsuario='". $idUsuario . "' AND usuarios.id=seguidores.idSeguido ORDER BY mensagens.horaPostagem DESC";
 						$result = $conexao->query($sql);
 
 						while ($mensagens = $result->fetch_array()) {
@@ -116,7 +116,7 @@
 							</div>
 							<div class="col-xs-9">
 								<div class="row messageHeader">
-									<p class="col-xs-6 messageName text-xs-left"><a href=<?php echo "userpage.php?id=". $mensagens["idUsuario"];?>><?php echo $mensagens["nome"] ?></a></p>
+									<div class="col-xs-6 messageName text-xs-left"><a href=<?php echo "userpage.php?id=". $mensagens["idUsuario"];?>><?php echo $mensagens["nome"] ?></a><p class="text-muted"><?php echo $mensagens["login"] ?></p> </div>
 									<p class="col-xs-6 messageTime text-xs-right text-muted"><?php echo date("H:i:s - d/n/Y",strtotime($mensagens["horaPostagem"]))?></p>
 								</div>
 							</div>

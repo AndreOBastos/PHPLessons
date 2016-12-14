@@ -58,7 +58,7 @@
 				<div class="col-xs-2 profile">
 					<img src=<?php echo "'" . $avatarUsuario . "'";?> class="avatar-main img-responsive rounded img-thumbnail"><br>
 					<p><strong><?php echo $nomeUsuario;?></strong></p>
-					<p><?php echo $loginUsuario;?></p>
+					<p><?php echo "- " . $loginUsuario;?></p>
 					<?php 
 						$sql = "SELECT idUsuario, idSeguido FROM seguidores WHERE idUsuario = " . $_SESSION["idUsuario"] . " AND idSeguido = " . $idUsuario;
 						$result = $conexao->query($sql);
@@ -113,7 +113,7 @@
 							</div>
 							<div class="col-xs-9">
 								<div class="row messageHeader">
-									<p class="col-xs-6 messageName text-xs-left"><a href=<?php echo "userpage.php?id=". $idUsuario;?>><?php echo $nomeUsuario ?></a></p>
+									<div class="col-xs-6 messageName text-xs-left"><a href=<?php echo "userpage.php?id=". $idUsuario;?>><?php echo $nomeUsuario ?></a><p class="text-muted"><?php echo $loginUsuario; ?></p></div>
 									<p class="col-xs-6 messageTime text-xs-right text-muted"><?php echo date("H:i:s - d/n/Y",strtotime($mensagens["horaPostagem"]))?></p>
 								</div>
 							</div>
