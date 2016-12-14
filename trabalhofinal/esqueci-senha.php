@@ -12,8 +12,8 @@ if ($conexao->connect_errno) {
 		header("Location:index.php");
 	} else {
 		$nome = addslashes(trim($_POST["nome"]));
-		$codigo = $_POST["codigo"];
-		$sql = "SELECT id FROM usuarios WHERE login='" . $nome . "' AND codigo=" . $codigo;
+		$codigo = md5(trim($_POST["codigo"]));
+		$sql = "SELECT id FROM usuarios WHERE login='" . $nome . "' AND codigo='" . $codigo . "'";
 		$result = $conexao->query($sql);
 
 		if (!($dado = $result->fetch_array())) {

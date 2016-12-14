@@ -57,7 +57,7 @@
 			<div class="row">
 				<div class="col-xs-2 profile">
 					<img src=<?php echo "'" . $avatarUsuario . "'";?> class="avatar-main img-responsive rounded img-thumbnail"><br>
-					<p><strong><?php echo $nomeUsuario;?></strong></p>
+					<h4><strong><?php echo $nomeUsuario;?></strong></h4>
 					<p><?php echo "- " . $loginUsuario;?></p>
 					<?php 
 						$sql = "SELECT idUsuario, idSeguido FROM seguidores WHERE idUsuario = " . $_SESSION["idUsuario"] . " AND idSeguido = " . $idUsuario;
@@ -85,14 +85,14 @@
 						if(isset($_SESSION['followErrorMessage']) && !empty($_SESSION['followErrorMessage']))
 						{
 							echo "<div class='alert alert-warning' id='message'>";
-							echo "<span>" . $_SESSION['followErrorMessage'] . "</span>";
+							echo "<span class='text-xs-center'>" . $_SESSION['followErrorMessage'] . "</span>";
 							echo "</div>";
 							unset($_SESSION['followErrorMessage']);
 						}
 						if(isset($_SESSION['followSuccessMessage']) && !empty($_SESSION['followSuccessMessage']))
 						{
 							echo "<div class='alert alert-success' id='message'>";
-							echo "<span>" . $_SESSION['followSuccessMessage'] . "</span>";
+							echo "<span class='text-xs-center'>" . $_SESSION['followSuccessMessage'] . "</span>";
 							echo "</div>";
 							unset($_SESSION['followSuccessMessage']);
 						}

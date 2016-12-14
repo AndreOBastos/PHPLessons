@@ -13,42 +13,7 @@
 			  src="https://code.jquery.com/jquery-3.1.1.js"
 			  integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
 			  crossorigin="anonymous"></script>
-		<script type="text/javascript">
-			$(document).ready(function(){
-				$("#logar").click(function(){
-					$("#LoginForm").show();
-					$("#RegisterForm").hide();
-					$("#EsqueciForm").hide();
-					$("#logar").addClass("active");
-					$("#registrar").removeClass("active");
-					$("#esqueci").removeClass("active");
-				});
-				$("#registrar").click(function(){
-					$("#LoginForm").hide();
-					$("#RegisterForm").show();
-					$("#EsqueciForm").hide();
-					$("#logar").removeClass("active");
-					$("#registrar").addClass("active");
-					$("#esqueci").removeClass("active");
-				});
-				$("#esqueciLink").click(function(){
-					$("#LoginForm").hide();
-					$("#RegisterForm").hide();
-					$("#EsqueciForm").show();
-					$("#logar").removeClass("active");
-					$("#registrar").removeClass("active");
-					$("#esqueci").addClass("active");
-				});
-				$("#esqueci").click(function(){
-					$("#LoginForm").hide();
-					$("#RegisterForm").hide();
-					$("#EsqueciForm").show();
-					$("#logar").removeClass("active");
-					$("#registrar").removeClass("active");
-					$("#esqueci").addClass("active");
-				});
-			});	
-		</script>
+		<script type="text/javascript" src="js/script.js"></script>
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 		<link href="https://fonts.googleapis.com/css?family=PT+Sans|Ubuntu" rel="stylesheet">  
 	</head>
@@ -71,19 +36,19 @@
 					if(isset($_SESSION['loginErrorMessage']) && !empty($_SESSION['loginErrorMessage']))
 					{
 						echo "<div class='col-md-12 alert alert-warning' id='message'>";
-						echo "<span>" . $_SESSION['loginErrorMessage'] . "</span>";
+						echo "<span class='text-xs-center'>" . $_SESSION['loginErrorMessage'] . "</span>";
 						echo "</div>";
 					}
 					if(isset($_SESSION['registerErrorMessage']) && !empty($_SESSION['registerErrorMessage']))
 					{
 						echo "<div class='col-md-12 alert alert-warning' id='message'>";
-						echo "<span>" . $_SESSION["registerErrorMessage"] . "</span>";
+						echo "<span class='text-xs-center'>" . $_SESSION["registerErrorMessage"] . "</span>";
 						echo "</div>";
 					}
 					if(isset($_SESSION['registerSuccessMessage']) && !empty($_SESSION['registerSuccessMessage']))
 					{
 						echo "<div class='col-md-12 alert alert-success' id='message'>";
-						echo "<span>" . $_SESSION["registerSuccessMessage"] . "</span>";
+						echo "<span class='text-xs-center'>" . $_SESSION["registerSuccessMessage"] . "</span>";
 						echo "</div>";
 					}
 				?>	

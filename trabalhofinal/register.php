@@ -20,15 +20,15 @@
 					$nome = addslashes(trim($_POST["nome"]));
 					$login = addslashes(trim($_POST["login"]));
 					$senha = md5(trim($_POST["senha"]));
-					$codigo = $_POST["codigo"];
+					$codigo = md5(trim($_POST["codigo"]));
 					
-					$sql = "INSERT INTO usuarios (nome, login, senha, avatar, codigo) VALUES ('" . $nome . "', '". $login . "', '" . $senha ."', '" . $fileLocation . $name . "', " . $codigo . ")";
+					$sql = "INSERT INTO usuarios (nome, login, senha, avatar, codigo) VALUES ('" . $nome . "', '". $login . "', '" . $senha ."', '" . $fileLocation . $name . "', '" . $codigo . "')";
 				
 					if($conexao->query($sql)==TRUE){
 						$_SESSION["registerSuccessMessage"] = "Usuário adicionado com sucesso.";
 						header("Location:index.php");
 					} else {
-						$_SESSION["registerErrorMessage"] = "Problemas de conexão com o banco de dados. Tente novamente mais tarde.";
+						$_SESSION["registerErrorMessage"] = "Problemas de conexão com o banco de dados. Tente novamente mais tarde." . $sql;
 						header("Location:index.php");
 					}
 				} else {
@@ -40,7 +40,7 @@
 				$nome = addslashes(trim($_POST["nome"]));
 				$login = addslashes(trim($_POST["login"]));
 				$senha = md5(trim($_POST["senha"]));
-				$codigo = $_POST["codigo"];
+				$codigo = md5(trim($_POST["codigo"]));
 				
 				$sql = "INSERT INTO usuarios (nome, login, senha, codigo) VALUES ('" . $nome . "', '". $login . "', '" . $senha ."',". $codigo .")";
 			

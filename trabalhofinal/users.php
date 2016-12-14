@@ -59,7 +59,7 @@
 			<div class="row">
 				<div class="col-xs-2 profile">
 					<img src=<?php echo "'" . $avatarLocation . "'";?> class="avatar-main img-responsive rounded img-thumbnail"><br>
-					<p><strong><?php echo $nomeUsuario;?></strong></p>
+					<h4><strong><?php echo $nomeUsuario;?></strong></h4>
 					<p><?php echo "- " . $loginUsuario;?></p>
 				</div>
 				<div class="col-xs-8 news-feed">

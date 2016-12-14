@@ -1,0 +1,50 @@
+$(document).ready(function(){
+	$("#logar").click(function(){
+		$("#LoginForm").show();
+		$("#RegisterForm").hide();
+		$("#EsqueciForm").hide();
+		$("#logar").addClass("active");
+		$("#registrar").removeClass("active");
+		$("#esqueci").removeClass("active");
+		$(".alert-success").hide();
+		$(".alert-warning").hide();
+	});
+	$("#registrar").click(function(){
+		$("#LoginForm").hide();
+		$("#RegisterForm").show();
+		$("#EsqueciForm").hide();
+		$("#logar").removeClass("active");
+		$("#registrar").addClass("active");
+		$("#esqueci").removeClass("active");
+		$(".alert-success").hide();
+		$(".alert-warning").hide();
+	});
+	$("#esqueciLink").click(function(){
+		$("#LoginForm").hide();
+		$("#RegisterForm").hide();
+		$("#EsqueciForm").show();
+		$("#logar").removeClass("active");
+		$("#registrar").removeClass("active");
+		$("#esqueci").addClass("active");
+		$(".alert-success").hide();
+		$(".alert-warning").hide();
+	});
+	$("#esqueci").click(function(){
+		$("#LoginForm").hide();
+		$("#RegisterForm").hide();
+		$("#EsqueciForm").show();
+		$("#logar").removeClass("active");
+		$("#registrar").removeClass("active");
+		$("#esqueci").addClass("active");
+		$(".alert-success").hide();
+		$(".alert-warning").hide();
+	});
+	$("textarea").keyup(updateCount);
+	$("textarea").keydown(updateCount);
+	$("textarea").on('input', updateCount);
+
+	function updateCount(){
+		var cs = "Número de caracteres restantes: " + [300 - $(this).val().length];
+		$("#messageCounter").text(cs);
+	}
+});	

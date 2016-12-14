@@ -27,18 +27,7 @@
 			integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
 			crossorigin="anonymous">
 		</script>
-		<script type="text/javascript">
-			$(document).ready(function(){
-				$("textarea").keyup(updateCount);
-				$("textarea").keydown(updateCount);
-				$("textarea").on('input', updateCount);
-
-				function updateCount(){
-					var cs = "Número de caracteres restantes: " + [300 - $(this).val().length];
-					$("#messageCounter").text(cs);
-				}
-			});
-		</script>
+		<script type="text/javascript" src="js/script.js"></script>
 	</head>
 	<body>
 		<nav class="navbar navbar-light bg-faded">
@@ -68,7 +57,7 @@
 			<div class="row">
 				<div class="col-xs-2 profile">
 					<img src=<?php echo "'" . $avatarLocation . "'";?> class="avatar-main img-responsive rounded img-thumbnail" width="200px" height="200px"><br>
-					<p><strong><?php echo $nomeUsuario;?></strong></p>
+					<h4><strong><?php echo $nomeUsuario;?></strong></h4>
 					<p><?php echo "- " . $loginUsuario;?></p>
 				</div>
 				<div class="col-xs-8 news-feed">
@@ -76,14 +65,14 @@
 						if(isset($_SESSION['postErrorMessage']) && !empty($_SESSION['postErrorMessage']))
 						{
 							echo "<div class='alert alert-warning' id='message'>";
-							echo "<span>" . $_SESSION['postErrorMessage'] . "</span>";
+							echo "<span class='text-xs-center'>" . $_SESSION['postErrorMessage'] . "</span>";
 							echo "</div>";
 							unset($_SESSION['postErrorMessage']);
 						}
 						if(isset($_SESSION['postSuccessMessage']) && !empty($_SESSION['postSuccessMessage']))
 						{
 							echo "<div class='alert alert-success' id='message'>";
-							echo "<span>" . $_SESSION["postSuccessMessage"] . "</span>";
+							echo "<span class='text-xs-center'>" . $_SESSION["postSuccessMessage"] . "</span>";
 							echo "</div>";
 							unset($_SESSION['postSuccessMessage']);
 						}
@@ -91,8 +80,8 @@
 					<div class="formMessage">
 						<form class="form" method="POST" action="postmessage.php">
 							<div class="form-group">
-								<label for="message">Escreva a mensagem que deseja enviar:</label>
-								<textarea class="form-control" rows="4" name="mensagem" required></textarea>
+								<p>Escreva a mensagem que deseja enviar:</p>
+								<textarea class="form-control" rows="4" name="mensagem" required></textarea><br>
 								<div style="display:flex; justify-content: space-between;">
 									<button type="submit" name="sendMessage">Enviar Mensagem</button>
 									<span id="messageCounter">Número de caracteres restantes: 300</span>
